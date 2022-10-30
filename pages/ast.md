@@ -78,7 +78,7 @@ Ast Explore: [(1+2)*3](https://astexplorer.net/#/gist/ddf27440c0d7df3540f77058ea
 
 ---
 
-AST与编译器
+# AST与编译器
 
 Vue的虚拟DOM，Babel的代码转换
 
@@ -172,6 +172,9 @@ const a = 1
 - Babel
 
 ---
+layout: two-cols
+---
+
 
 [Start Code](https://astexplorer.net/#/gist/8a0abd40631677e000c874810213a84a/cc221c345758c7d3c771aaeedc32c1e8167cfcbf)
 
@@ -184,7 +187,7 @@ if(!a){
  console.log(false)
 }
 ```
-
+::right::
 
 ```javascript
 import type { Rule } from 'eslint'
@@ -382,24 +385,257 @@ layout: two-cols
 # AST CodeMode工具
 
 
-- jscodeshift
+```javascript
+import car from 'car';
 
+const suv = car.factory('white', 'Kia', 'Sorento', 2010, 50000, null, true);
+const truck = car.factory(
+  'silver',
+  'Toyota',
+  'Tacoma',
+  2006,
+  100000,
+  true,
+  true
+);
+```
 ::right::
 
-- gogocode
+将函数的多个入参封装为一个对象传入，变成下面这样
+
+```javascript
+import car from 'car';
+const suv = car.factory({
+  color: 'white',
+  make: 'Kia',
+  model: 'Sorento',
+  year: 2010,
+  miles: 50000,
+  bedliner: null,
+  alarm: true
+});
+const truck = car.factory({
+  color: 'silver',
+  make: 'Toyota',
+  model: 'Tacoma',
+  year: 2006,
+  miles: 100000,
+  bedliner: true,
+  alarm: true
+});
+```
+
+---
 
 
+# 用 jscodeshift 实现
+
+<div grid="~ cols-3 gap-1" m="-t-2">
+```javascript
+export default (fileInfo, api) => {
+  const j = api.jscodeshift;
+  const root = j(fileInfo.source);
+
+  // find declaration for "car" import
+  const importDeclaration = root.find(j.ImportDeclaration, {
+    source: {
+      type: 'Literal',
+      value: 'car'
+    }
+  });
+
+  // get the local name for the imported module
+  const localName = importDeclaration.find(j.Identifier).get(0).node.name;
+
+  // current order of arguments
+  const argKeys = [
+    'color',
+    'make',
+    'model',
+    'year',
+    'miles',
+    'bedliner',
+    'alarm'
+  ];
+};
+```
+
+```javascript
+ // find where `.factory` is being called
+  return (
+    root
+      .find(j.CallExpression, {
+        callee: {
+          type: 'MemberExpression',
+          object: {
+            name: localName
+          },
+          property: {
+            name: 'factory'
+          }
+        }
+      })
+
+
+```
+
+```javascript
+      .replaceWith(nodePath => {
+        const { node } = nodePath;
+
+        // use a builder to create the ObjectExpression
+        const argumentsAsObject = j.objectExpression(
+          // map the arguments to an Array of Property Nodes
+          node.arguments.map((arg, i) =>
+            j.property('init', j.identifier(argKeys[i]), j.literal(arg.value))
+          )
+        );
+
+        // replace the arguments with our new ObjectExpression
+        node.arguments = [argumentsAsObject];
+
+        return node;
+      })
+
+      // specify print options for recast
+      .toSource({ quote: 'single', trailingComma: true })
+  );
+
+```
+</div>
+
+---
+
+# 用gogocode实现
+
+```javascript
+const argKeys = [
+  'color',
+  'make',
+  'model',
+  'year',
+  'miles',
+  'bedliner',
+  'alarm'
+];
+const argObj = {};
+$(code)
+  .find(`const $_$1 = car.factory($_$2);`)
+  .each(item => {
+    const variableName = item.match[1][0].value;
+    item.match[2].forEach((match, j) => {
+        argObj[argKeys[j]] = match.value;
+    });
+    item.replaceBy(
+        $(`const ${variableName} = car.factory(${JSON.stringify(argObj)})`)
+    );
+  })
+  .root()
+  .generate()
+
+```
 ---
 
 # Transform Setup
 
+<div grid="~ cols-2 gap-1" m="-t-2">
+
+```vue{all|5|6-11|12|13-27|all}
+<script lang="ts">
+import { defineComponent, reactive, ref } from "vue"
+import Hello from 'hello.vue'
+export default defineComponent({
+  components: { Hello },
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+  },
+  emits: ['accepted'],
+  setup(props, context) {
+    const a = ref(1)
+    const b = reactive([])
+
+    function accept() {
+      context.emit('accepted')
+    }
+
+    return {
+      accept,
+      a,
+      b,
+      fn,
+    }
+  },
+})
+</script>
+```
+
+```vue
+<script setup lang="ts">
+import { reactive,ref,defineProps,defineEmits } from 'vue'
+import Hello from 'hello.vue'
+const props = defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+})
+const emit = defineEmit(['accepted'])
+const a = ref(1)
+const b = reactive([])
+
+function accept() {
+  emit('accepted')
+}
+</script>
+
+```
+</div>
 
 --- 
+
+# 转换步骤
+[GoGoCode PlayGround](https://play.gogocode.io/)
+
+1. 提取出setup中的给个Node节点，并且移除Setup节点
+
+```javascript
+script.find('{ setup() {$$$0} }').match.$$$0.forEach((node) => {
+    if (node.type !== 'ReturnStatement')
+      script.after(node)
+})
+script.find('setup(){}').remove()
+```
+
+[$$$ 通配符](https://gogocode.io/zh/docs/specification/basic#%E5%8C%B9%E9%85%8D%E5%A4%9A%E4%B8%AA%E5%90%8C%E7%B1%BB%E8%8A%82%E7%82%B9)
+
+---
+
+# 转换步骤
+2. 移除 defineComponent
+
+```javascript
+  // remove defineComponent
+  script.find('export default $_$1').each((item) => {
+    item.remove()
+  })
+
+  // remove import defineComponent
+  script.replace(
+    'import { $$$1,defineComponent } from \'vue\'',
+    'import { $$$1 } from \'vue\'',
+  )
+```
+
+[replace](https://gogocode.io/zh/docs/specification/basic#%E5%87%BD%E6%95%B0%E6%9B%B4%E5%90%8D)
+---
 
 # Summary
 
 - 什么时候使用AST工具?
-<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/515b3369-c1ee-45b0-83c9-1f53becb3aee/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221030%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221030T151058Z&X-Amz-Expires=86400&X-Amz-Signature=7eeea6bba21c249d84d3f608eb43e18a0f8380e1c9b589edd59eeee68de2f1da&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject">
+<img src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/515b3369-c1ee-45b0-83c9-1f53becb3aee/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221030%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221030T151058Z&X-Amz-Expires=86400&X-Amz-Signature=7eeea6bba21c249d84d3f608eb43e18a0f8380e1c9b589edd59eeee68de2f1da&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22Untitled.png%22&x-id=GetObject" h-50vh>
 
 ---
 
@@ -407,4 +643,8 @@ layout: two-cols
 
 不足点：
 
-
+1. 纯JS，缺乏一定类型推导
+2. 有一定的学习成本。开发过程中可能会有很多调试的工作。不能和DOM一样
+   1. 查询：getElement* , querySelector*
+   2. 创建：createElement
+   3. 修改：prepend，prepend，before，after，remove，replaceWith
