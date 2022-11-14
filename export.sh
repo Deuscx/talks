@@ -5,3 +5,5 @@ function exportPdf(){
       npx slidev export ./pages/${filename}.md --output ./pdf/${filename}.pdf --timeout 1000000
     done;
 }
+
+exportPdf
