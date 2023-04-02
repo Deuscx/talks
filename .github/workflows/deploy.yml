@@ -19,7 +19,7 @@ jobs:
         run: |
           echo ${{ env.slide }}
           npm install
-          npm run build -- ./pages/${{ env.slide }}.md --base /talks/${{ env.slide }}/
+          npm run build -- ./pages/${{ env.slide }}.md --base /talks/${{ env.slide }}/ --out ./dist/${{ env.slide }}/
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
