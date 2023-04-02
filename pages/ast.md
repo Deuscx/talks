@@ -51,7 +51,7 @@ layout: two-cols
 
 ::right::
 
-<img src="/public/ast/ast1.png" class="h-60 rounded shadow" />
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast1.png" class="h-60 rounded shadow" />
 
 ---
 
@@ -59,13 +59,13 @@ layout: two-cols
 
 [AST explorer](https://astexplorer.net/)
 
-<img src="/public/ast/ast2.png">
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast2.png">
 
 ---
 
 Ast Explore: [(1+2)*3](https://astexplorer.net/#/gist/ddf27440c0d7df3540f77058ea2fb4c2/b88970050a3fdccb9cbe1f88c68219460e7ba5ae)
 
-<img src="/public/ast/ast3.png">
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast3.png">
 
 ---
 
@@ -149,7 +149,7 @@ const a = 1
 </div>
 
 <div>
-<img src="/public/ast/ast4.webp">
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast4.webp">
 </div>
 </div>
 
@@ -368,7 +368,7 @@ Vue3的语法 `Composition API: setup()`  和 `<script setup>`
 - 更好的 IDE 类型推导性能 (减少了语言服务器从代码中抽取类型的工作)。
 - 方便调试
 
-<img src="/public/ast/ast5.png" />
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast5.png" />
 ---
 
 # 代码转换方法对比
@@ -377,7 +377,7 @@ Vue3的语法 `Composition API: setup()`  和 `<script setup>`
 - 正则表达式
 
 
-<img src="/public/ast/ast6.png" />
+<img src="https://raw.githubusercontent.com/Deuscx/talks/main/public/ast/ast6.png" />
 
 ---
 layout: two-cols
