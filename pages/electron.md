@@ -45,7 +45,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 Electron是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架。
 
-<img src="/img1.png" class="h-60 rounded shadow" />
+<!-- <img src="/img1.png" class="h-60 rounded shadow" /> -->
 
 - Chromium 提供UI渲染能力
 - Node.js  负责业务逻辑
@@ -79,7 +79,7 @@ h1 {
 
 - 开发方便。当不涉及一些原生化操作时，开发相较于QT这类传统跨端技术更加方便
 
-<img src="/apps.png" class="h-40 rounded shadow" />
+<!-- <img src="/apps.png" class="h-40 rounded shadow" /> -->
 <!-- https://sli.dev/guide/animations.html#click-animations -->
 
 <!--
@@ -95,7 +95,7 @@ h1 {
 
 # 多进程架构
 
-<img src="/img2.png" class="h-60 rounded shadow" />
+<!-- <img src="/img2.png" class="h-60 rounded shadow" /> -->
 
 - Main 主进程：通过Node, 原生API，来实现一些系统以及底层的操作。比如创建系统级别的菜单，操作剪贴板，创建APP的窗口等。
 - Renderer 进程：主要通过Chromium来实现APP的图形界面
@@ -108,7 +108,7 @@ h1 {
 
 <div grid="~ cols-[1fr_300px] gap-4">
   <div >	
-    <img src="/img3.png" class="w100% rounded shadow" />
+    <!-- <img src="/img3.png" class="w100% rounded shadow" /> -->
   </div>
   
   <div>	
@@ -259,7 +259,7 @@ contextBridge.exposeInMainWorld('api', {
 
 小布会议中在共享屏幕/最小化时 需要多窗口交互数据的需求
 
-<img src="/meet.png" class="h-80 rounded shadow" />
+<!-- <img src="/meet.png" class="h-80 rounded shadow" /> -->
 
 
 ---
@@ -268,7 +268,7 @@ layout: center
 
 # IPC数据交互
 
-<img src="/ipc.png" rounded shadow h-60>
+<!-- <img src="/ipc.png" rounded shadow h-60> -->
 
 基于Electron的IPC机制的，进程之间的通信的数据必须是可序列化的，比如JSON序列化。
 
@@ -289,7 +289,7 @@ layout: center
 </div>
 
 <div>
-	<img src="/type.png" rounded shadow h-60>
+	<!-- <img src="/type.png" rounded shadow h-60> -->
 </div>
 
 </div>
@@ -363,7 +363,7 @@ if (ele?.closest(".window")) {
 - 现有的 C++类库低成本地封装成 Node.js 扩展，供 Node 生态使用
 
 eg: `RobotJS`  `node-sass`
-<img src="/img4.png" class="h-30 rounded shadow" />
+<!-- <img src="/img4.png" class="h-30 rounded shadow" /> -->
 
 
 ---
@@ -375,14 +375,14 @@ NodeJs 本身是基于 V8引擎和libuv，用C++进行开发的。因此非常�
 
 在Node.js 中被 require 的时候，是通过 process.dlopen() 对其进行引入的
 
-<img src="/img5.png" class="h-60 rounded shadow" />
+<!-- <img src="/img5.png" class="h-60 rounded shadow" /> -->
 
 
 ---
 
 # require
 
-<img src="/img6.png" class="h-90 rounded shadow" />
+<!-- <img src="/img6.png" class="h-90 rounded shadow" /> -->
 
 ---
 

@@ -7,26 +7,23 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.head_commit.message, 'deploy') }}
+    # if: ${{ contains(github.event.head_commit.message, 'deploy') }}
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
 
-      - name: Set env
+      - name: Install 🔧
         run: |
-          echo "slide=$(echo '${{ github.event.head_commit.message }}' | cut -d' ' -f 2)" >> $GITHUB_ENV
-      - name: Install and Build 🔧
-        run: |
-          echo ${{ env.slide }}
           npm install
-          npm run build -- ./pages/${{ env.slide }}.md --base /talks/${{ env.slide }}/ --out ./dist/${{ env.slide }}/
+      - name: Build and Deploy dist🔧
+        run: npm run deploy
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages # The branch the action should deploy to.
           folder: pages/dist # The folder the action should deploy.
-          target-folder: ${{ env.slide }}
-          clean: false
+          # target-folder: ${{ env.slide }}
+          # clean: false
 
       # - name: Checkout for README 🛎️
       #   uses: actions/checkout@v2.3.1
