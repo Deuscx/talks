@@ -41,7 +41,8 @@ jobs:
           git diff
           git config --global user.email "deuscx@gmail.com"
           git config --global user.name "deuscx"
-          git pull -u origin main
+          git branch -u origin/main
+          git pull
           git add -A
           git commit -m "Updated content" || exit 0
           git push
