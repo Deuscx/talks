@@ -1,7 +1,7 @@
 #!/usr/bin/env zx
 import path from 'path'
 import fs from 'fs-extra'
-let slides = await glob(['pages/*.md'])
+let slides = await glob(['src/*.md'])
 
 const slidesName = slides.map(slide => path.basename(slide, '.md'))
 
@@ -9,7 +9,7 @@ const slidesLink = ["\r\n"]
 for (let slide of slidesName) {
     console.log(slide)
     slidesLink.push(`- ${slide }: [link](https://deuscx.github.io/talks/${ slide }/)`)
-    await $`npm run build -- ./pages/${slide}.md --base /talks/${slide}/ --out ./dist/${slide}`
+    await $`npm run build -- ./src/${slide}.md --base /talks/${slide}/ --out ./dist/${slide}`
 }
 slidesLink.push("\r\n")
 console.log('🚀rewrite readme')
