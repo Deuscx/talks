@@ -14,6 +14,7 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 <!-- slides starts -->
 
 - ast: [link](https://deuscx.github.io/talks/ast/)
+- components: [link](https://deuscx.github.io/talks/components/)
 - electron: [link](https://deuscx.github.io/talks/electron/)
 
 <!-- slides ends -->
