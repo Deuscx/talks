@@ -44,3 +44,38 @@ buildIn Component
 
 <Counter />
 ---
+
+# 动画
+
+<div class="grid grid-cols-2">
+
+  <!-- 组件用法：在你按下 “下一步” 之前，这是不可见的 -->
+  <v-click>
+
+  Hello World
+
+  </v-click>
+
+  <!-- 指令用法：在你第二次按下 “下一步” 之前，这是不可见的 -->
+  <div v-click class="text-xl p-2">
+
+  Hey!
+
+  </div>
+</div>
+
+ ```typescript
+  <!-- 组件用法：在你按下 “下一步” 之前，这是不可见的 -->
+  <v-click>
+
+  Hello World
+
+  </v-click>
+
+  <!-- 指令用法：在你第二次按下 “下一步” 之前，这是不可见的 -->
+  <div v-click class="text-xl p-2">
+
+  Hey!
+
+  </div>
+ ```
