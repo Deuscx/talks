@@ -13,6 +13,7 @@ drawings:
   persist: false
 css: unocss
 title: AST
+routerMode: 'hash'
 ---
 
 # AST

@@ -13,6 +13,7 @@ drawings:
   persist: false
 css: unocss
 title: Welcome to Slidev
+routerMode: 'hash'
 ---
 
 # Electron 分享

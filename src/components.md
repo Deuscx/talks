@@ -12,6 +12,7 @@ drawings:
   persist: false
 css: unocss
 title: Custom Components
+routerMode: 'hash'
 ---
 
 # Custom Componet
