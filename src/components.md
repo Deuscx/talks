@@ -39,7 +39,7 @@ buildIn Component
 
 ---
 
-<WordIndex word="hello" :deleted="[1]"/>
+<WordIndex word="hello" :deleted="[1]" :added="[2]"/>
 
 <Counter />
 ---
