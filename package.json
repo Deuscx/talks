@@ -11,6 +11,7 @@
     "@slidev/cli": "^0.40.14",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
+    "rety": "^1.0.0",
     "unocss": "^0.51.8",
     "zx": "^7.2.1"
   },

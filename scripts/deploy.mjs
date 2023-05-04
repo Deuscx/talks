@@ -22,5 +22,5 @@ function replaceContent (content, marker, chunk) {
 const readmePath = path.join(__dirname, '../README.md')
 const content = fs.readFileSync(readmePath, { encoding: 'utf8' });
 const rewriteContent = replaceContent(content, "slides", slidesLink.join("\r\n"))
-console.log(`rewrite ${readmePath}:`,replaceContent)
+console.log(`rewrite ${readmePath}:`,rewriteContent)
 fs.writeFileSync(readmePath, rewriteContent)

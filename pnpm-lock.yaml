@@ -10,6 +10,9 @@ dependencies:
   '@slidev/theme-seriph':
     specifier: '*'
     version: registry.npmmirror.com/@slidev/theme-seriph@0.21.3
+  rety:
+    specifier: ^1.0.0
+    version: registry.npmmirror.com/rety@1.0.0
   unocss:
     specifier: ^0.51.8
     version: registry.npmmirror.com/unocss@0.51.8(postcss@8.4.22)(vite@4.3.1)
@@ -4509,6 +4512,12 @@ packages:
       is-core-module: registry.npmmirror.com/is-core-module@2.11.0
       path-parse: registry.npmmirror.com/path-parse@1.0.7
       supports-preserve-symlinks-flag: registry.npmmirror.com/supports-preserve-symlinks-flag@1.0.0
+    dev: false
+
+  registry.npmmirror.com/rety@1.0.0:
+    resolution: {integrity: sha512-PAKOi65yZdx/VbBN+8jdwIJXyHxAeMi1JWgDX6qBgQ5bbZV1xwR5yA1EXqMcNvlV+M2nApEmjWlaVVxL6gPNOw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rety/-/rety-1.0.0.tgz}
+    name: rety
+    version: 1.0.0
     dev: false
 
   registry.npmmirror.com/reusify@1.0.4:
