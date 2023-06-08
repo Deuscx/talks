@@ -85,3 +85,9 @@ buildIn Component
 # Rety
 
 <Rety />
+
+--- 
+
+# Sandbox
+
+<Sandbox src="https://codesandbox.io/p/sandbox/serene-euclid-nmvzcm?embed=1"/>
