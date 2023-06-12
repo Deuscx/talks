@@ -91,3 +91,7 @@ buildIn Component
 # Sandbox
 
 <Sandbox src="https://codesandbox.io/p/sandbox/serene-euclid-nmvzcm?embed=1"/>
+
+---
+src: './reuse/thanks.md'
+---
