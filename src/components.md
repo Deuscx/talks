@@ -121,7 +121,12 @@ buildIn Component
 
 ---
 
----
+# WordList
 
+<WordLinkList word="hello"/>
+
+
+
+---
 src: './reuse/thanks.md'
 ---
