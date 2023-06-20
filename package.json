@@ -8,7 +8,7 @@
     "deploy": "zx ./scripts/deploy.mjs"
   },
   "dependencies": {
-    "@slidev/cli": "^0.42.4",
+    "@slidev/cli": "^0.42.5",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
     "rety": "^1.0.0",
@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",
-    "@iconify-json/logos": "^1.1.32",
+    "@iconify-json/logos": "^1.1.33",
     "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/twemoji": "^1.1.11",
-    "playwright-chromium": "^1.35.0"
+    "playwright-chromium": "^1.35.1"
   }
 }
