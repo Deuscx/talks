@@ -41,8 +41,8 @@ jobs:
       #   with:
       #     commit_message: "readme: add slide link"
       #     file_pattern: README.md
-      # - name: Checkout for README 🛎️
-      #   uses: actions/checkout@v2.3.1
+      - name: Checkout for README 🛎️
+        uses: actions/checkout@v2
       - name: Commit and push if changed
         run: |-
           git diff
@@ -52,4 +52,4 @@ jobs:
           git pull
           git add -A
           git commit -m "Updated content" || exit 0
-          git push
+          git push -u origin/main
