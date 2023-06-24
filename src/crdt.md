@@ -405,10 +405,12 @@ ytext.toString() // => 'abc'
 
 # Todo App
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);border-radius:2px;" width="800" height="450" src="https://codesandbox.io/p/sandbox/crazy-bohr-l4z4wn?file=%2Fsrc%2Ftodo.ts%3A1%2C1&embed=1" allowfullscreen></iframe>
-yjs 协同的原理是将协同数据和应用数据绑定起来，协同数据负责保持多个副本数据的一致，应用数据负责编辑器内的各类操作和展示。
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);border-radius:2px;" width="800" height="400" src="https://codesandbox.io/p/sandbox/crazy-bohr-l4z4wn?file=%2Fsrc%2Ftodo.ts%3A1%2C1&embed=1" allowfullscreen></iframe>
+
 
 ---
+
+yjs 协同的原理是将协同数据和应用数据绑定起来，协同数据负责保持多个副本数据的一致，应用数据负责编辑器内的各类操作和展示。
 
 <div class="grid grid-cols-2 gap-4">
 
