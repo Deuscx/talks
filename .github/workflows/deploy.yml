@@ -10,16 +10,16 @@ jobs:
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2
-      - name: Cache node_modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-nodeModules-${{ hashFiles('package-lock.json') }}-${{ hashFiles('package.json') }}
-          restore-keys: | 
-            ${{ runner.os }}-nodeModules-
+      # - name: Cache node_modules
+      #   id: cache-node-modules
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-nodeModules-${{ hashFiles('package-lock.json') }}-${{ hashFiles('package.json') }}
+      #     restore-keys: | 
+      #       ${{ runner.os }}-nodeModules-
       - name: Install 🔧
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        # if: steps.cache-node-modules.outputs.cache-hit != 'true'
         run: |-
           npm install
           cat README.md
