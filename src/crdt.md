@@ -16,6 +16,7 @@ routerMode: 'hash'
 
 ---
 layout: intro
+hideInToc: true
 ---
 
 ## Table Of Content
@@ -57,7 +58,7 @@ layout: intro
 
 ---
 
-# AFFINE
+### AFFINE
 
 一个本地优先的软件，使用一种新的协同编辑技术，称为无冲突可复制数据类型（Conflict-free replicated data type，CRDT）
 优点：
@@ -118,7 +119,7 @@ layout: section
   
 用户B:  A → C  → B
   
-按照默认处理他们把各自的操作通过消息服务传给对方，则会造成左边最终显示居右、右边最终显示居左，数据出现不一致，这种情况称为并发冲突，他们基于相同的位置修改了相同的属性。
+按照默认处理他们把各自的操作通过消息服务传给对方，用户A改写成C，用户B改写为B，数据出现不一致，这种情况称为并发冲突，他们基于相同的位置修改了相同的属性。
 </v-clicks>
 
 
@@ -256,9 +257,11 @@ layout: section
 ConnectionProvider
 
 - y-websocket/ y-webrtc - 提供协同编辑时的消息通讯，包含服务端实现和前端集成的SDK
+
+
 Datebase Provider
 - y-redis / y-indexeddb - 持久化数据，用于离线编辑 、存储到数据库
-其他：
+
 - y-protocols - 定义消息通讯协议，包括消息服务初始化、内容更新、鉴权、感知系统等
 
 在上层 Yjs 支持任何大部分主流编辑器的接入，因为 Yjs 也可以理解为一套独立的数据模型，它与每种编辑器本身的数据模型是不同的，所以每种编辑器想要接入 Yjs 都必须实现一个中间绑定层，用于编辑器数据模型与 Yjs 数据模型转换
