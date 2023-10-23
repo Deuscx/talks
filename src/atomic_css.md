@@ -313,15 +313,15 @@ export default defineConfig({
 
 | 包名 | 描述 |
 | --- | --- |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/uno | 默认预设 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/mini | 最小但包含必要的规则和变体 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/wind | Tailwind / Windi CSS 预设 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/attributify | 启用属性化模式的其他规则 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/tagify | 启用 Tagify 模式的其他规则 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/icons | 由 Iconify 提供支持的纯 CSS 图标解决方案 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/web-fonts | 支持 Web 字体（如 Google Fonts 等 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/typography | 排版预设 |
-| https://alfred-skyblue.github.io/unocss-docs-cn/presets/rem-to-px | 将 rem 转换为 px 的实用工具 |
+| @unocss/preset-uno | 默认预设 |
+| @unocss/preset-mini | 最小但包含必要的规则和变体 |
+| @unocss/preset-wind | Tailwind / Windi CSS 预设 |
+| @unocss/preset-attributify | 启用属性化模式的其他规则 |
+| @unocss/preset-tagify | 启用 Tagify 模式的其他规则 |
+| @unocss/preset-icons | 由 Iconify 提供支持的纯 CSS 图标解决方案 |
+| @unocss/preset-web-fonts | 支持 Web 字体（如 Google Fonts 等 |
+| @unocss/preset-typography | 排版预设 |
+| @unocss/preset-rem-to-px | 将 rem 转换为 px 的实用工具 |
 
 
 --- 
@@ -444,4 +444,34 @@ layout: section
 ---
 
 # 原子化CSS使用实践
+- 推荐工具
+- 推荐使用场景
 
+
+---
+
+## 推荐工具
+
+- Unocss插件
+使用 vscode 的编辑器，建议安装自动补全插件
+
+<div class="flex flex-col gap-2" >
+<img class="w-100 h-20" src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070153.png" />
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070602.png" />
+</div>
+
+---
+
+## 推荐工具
+
+- 交互式文档
+
+<iframe class="w-full h-400px" src="https://unocss.dev/interactive/" />
+
+--- 
+
+## 推荐工具
+- 在线playground
+
+<iframe class="w-full h-400px" src="https://unocss.dev/play/" />
+ 
