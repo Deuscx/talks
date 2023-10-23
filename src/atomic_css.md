@@ -4,6 +4,7 @@ colorSchema: 'auto'
 layout: intro
 highlighter: shiki
 title: Slidev Penguin Theme
+routerMode: 'hash'
 hideInToc: true
 ---
 
