@@ -25,6 +25,95 @@ hideInToc: true
 
 --- 
 
+# CSS发展进程
+
+在 2003 年之前，CSS 并没有在 Web 开发中大量使用. 大部分样式通过原生标签属性实现
+早期的时候，页面布局通常使用的是 HTML 表格，在行和列中组织内容，这种方式虽然有效，但是把内容和表现杂糅在一块了，如果你想改变网页的布局就得需要修改大量的 HTML 代码。
+
+```html
+<table>
+  <tr>
+    <th>Posts</th>
+    <th>Comments</th>
+  </tr>
+  <tr>
+    <td align="center"><b>123</b></td>
+    <td align="center"><i>4.56k</i></td>
+  </tr>
+</table>
+```
+
+上述代码的所有样式都是用 HTML 实现的:
+
+- 对于布局，我们使用 `<table>`
+- align 属性用于对齐
+- 非语义化标签：`b` ，`i`  用于文本格式
+
+--- 
+
+## CSS的出现
+
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/scalable-css-evolution-light.00a21e8e.gif" class="h-200px"/>
+
+随着浏览器对 CSS 功能的支持，CSS 的出现推动了结构（HTML）和样式（CSS）的分离，人们开始把所有的布局代码从 HTML 中移除放入到 CSS 中
+
+一旦开发人员开始大量使用 CSS，就会遇到可扩展性和可维护性问题。
+
+---
+
+## 可扩展性问题-选择器重复
+
+使用原生CSS 时我们首先遇到的 CSS 的问题就是代码重复。每当我们定义伪类、伪元素或媒体查询时，我们都必须复制 CSS 选择器：
+
+```css
+/* class definition */
+.product_title { }
+
+/* pseudo-class and pseudo-element */
+.product_title:hover { }
+.product_title::after { }
+
+/* media query */
+@media (min-width: 768px) {
+  .product_title { }
+  .product_title::after { }
+}
+```
+
+在重命名、移动或删除等重构过程中，处理大量重复的类可能会变得很棘手。
+
+---
+
+## 可扩展性问题-命名冲突
+
+我们定义的所有 CSS 规则最终都将位于单个全局命名空间中。如果不规范命名，重用的类名通常包含常见名词，例如 .modal、.button、.overlay 等。当项目一旦庞大，对于同名的css，它们就会被覆盖
+
+CSS 缺乏对命名空间的支持，因此语言本身并不能帮助我们防止样式覆盖。此问题的标准解决方案是添加特定于项目的前缀，例如abc-heading-large。
+
+然而，前缀并不能保证名称的唯一性。例如，在处理许多大文件时，我们如何确定没有其他人添加了 .abc-heading-large 类？当然，我们可以搜索整个代码库以查看是否已经定义了同名的类，但这仅适用于静态类。
+
+对于动态类，例如：
+```tsx
+const classname = `abc-heading-${isPromo ? "large" : "small"}`;
+```
+
+在这种情况下，确保没有任何命名冲突可能会成为一个相当大的挑战。
+
+--- 
+
+## 可扩展性问题-无用代码
+
+在大型项目中，我们通常会遇到许多未使用的 CSS 代码。
+通常发生在：
+
+- 我们删除了 HTML 标记，但忘记删除关联的样式。
+- 我们想要删除关联的样式，但我们不知道它们是否在代码库中的其他地方使用。因此，我们选择不删除现有样式，而不是冒破坏现有代码的风险。
+
+这些未使用的代码会增加文件大小，从而增加加载时间。并使代码库越来越难以管理。
+
+
+---
+
 # 什么是原子化CSS
 
 原子化 CSS 是一种 CSS 的架构方式，它倾向于小巧且用途单一的 class，并且会以视觉效果进行命名。
