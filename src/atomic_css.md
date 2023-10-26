@@ -3,7 +3,7 @@ theme: penguin
 colorSchema: 'auto'
 layout: intro
 highlighter: shiki
-title: Slidev Penguin Theme
+title: 原子化CSS
 routerMode: 'hash'
 hideInToc: true
 ---
@@ -264,12 +264,14 @@ BEM 的规范很容易理解，对于新手来说命名规则上也很友好，�
 
 
 ---
-layout: section
+layout: new-section
 ---
 
 # Unocss的使用
-- 什么是Unocss
-- Unocss的规则与预设
+
+什么是Unocss
+
+Unocss的规则与预设
 
 --- 
 
@@ -448,7 +450,7 @@ theme: {
 
 --- 
 
-# 定义预设
+## 定义预设
 
 一旦您创建了一些规则，您可以将它们提取到一个预设中，并与他人分享。例如，您可以为您公司的设计系统创建一个预设，并与您的团队共享。
 
@@ -630,19 +632,21 @@ pnpm add -D @unocss/preset-icons @iconify-json/[the-collection-you-want]
 
 
 ---
-layout: section
+layout: new-section
 ---
 
 # 原子化CSS使用实践
-- 推荐工具
-- 推荐使用场景
+ 推荐工具
+
+ 推荐使用方法
+
+ AI与原子化CSS
 
 
 ---
 
-## 推荐工具
+## 推荐工具-Unocss插件
 
-- Unocss插件
 使用 vscode 的编辑器，建议安装自动补全插件
 
 <img class="w-100 h-20 mb-4" src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070153.png" />
@@ -654,16 +658,91 @@ layout: section
 
 ---
 
-## 推荐工具
+## 推荐工具-交互式文档
 
-- 交互式文档
 
 <iframe class="w-full h-400px" src="https://unocss.dev/interactive/" />
 
 --- 
 
-## 推荐工具
-- 在线playground
+## 推荐工具-在线playground
 
 <iframe class="w-full h-400px" src="https://unocss.dev/play/" />
- 
+
+---
+
+## 使用方法 - Figma To Code
+
+在一些简单的业务场景上，原子化CSS有非常大的优势，比如快速开发响应式H5, 官网页面,复杂度较低的中后台系统
+Figma To Code 插件可以将设计稿转换为代码，支持原子化CSS的导出
+<div class="flex gap-4">
+  <img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026212121.png" class="h-40"/>
+  <img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026205922.png" class="h-300px"/>
+</div>
+
+--- 
+
+## 使用方法 - CSS组件库
+
+选择基于原子化CSS搭建的纯CSS框架：daisyui
+<iframe src="https://daisyui.com/components/modal/" class="h-400px w-full"/>
+
+--- 
+
+## 使用方法 - headless UI
+
+> Headless UI 一套基于 React Hooks 的组件开发设计理念，强调只负责组件的状态及交互逻辑，而不管标签和样式。 其本质思想其实就是关注点分离：将组件的“状态及交互逻辑”和“UI 展示层”实现解耦。
+
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026213439.png" class="h-300px"/>
+
+Headless UI 和 普通组件库的对比
+- Headless UI支持样式完全自定义，普通组件仅支持小改动；
+- Headless UI 使用成本高，需要自定义样式；普通组件开箱即用；
+
+---
+
+## headless UI库
+主流的headless UI库有：
+- [headlessui](https://headlessui.dev/)
+- [radix](https://www.radix-ui.com/)  
+以checkbox为例, Headless ui具有更高的自定义性。如何把Label放在左边
+<div class="grid grid-cols-2 gap-4">
+
+```vue
+<el-checkbox v-model="checked1" label="Label" size="large" />
+```
+
+<example-checkbox/>
+
+```vue
+/** headless ui */
+<div class="flex items-center">
+  <CheckboxRoot  class="bg-blue flex items-center justify-center h-[15px] w-[15px] rounded">
+    <CheckboxIndicator > 
+      <div class="i-carbon-checkmark"></div> 
+    </CheckboxIndicator>    
+  </CheckboxRoot>
+ <div>Option 1</div>
+</div>
+</div>
+```
+
+<div class="flex items-center">
+  <CheckboxRoot  class="bg-blue flex items-center justify-center h-[15px] w-[15px] rounded">
+    <CheckboxIndicator > 
+      <div class="i-carbon-checkmark"></div> 
+    </CheckboxIndicator>    
+  </CheckboxRoot>
+  <div>Label</div>
+</div>
+</div>
+
+--- 
+
+## Shadcn
+[shadcn/ui](https://ui.shadcn.com/)基于radix ui，提供了一套统一的样式规范（UI Kit）。使用shadcn中的某个组件，不是通过npm安装shadcn这个包，来引入组件。而是直接复制该组件的代码到项目目录下（当然，整个复制过程是通过cli工具完成的）。
+
+在保证高度自定义度的同时，也提供了一个好看的样式预设
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026223048.png" class="h-300px"/>
+
+

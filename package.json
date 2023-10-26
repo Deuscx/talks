@@ -12,6 +12,8 @@
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
     "@vueuse/core": "^10.5.0",
+    "element-plus": "^2.4.1",
+    "radix-vue": "^1.0.1",
     "rety": "^1.0.0",
     "slidev-theme-penguin": "^2.1.0",
     "unocss": "^0.53.1",
@@ -19,6 +21,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",
+    "@iconify-json/el": "^1.1.5",
     "@iconify-json/logos": "^1.1.33",
     "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/twemoji": "^1.1.11",
