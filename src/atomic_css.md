@@ -30,6 +30,8 @@ hideInToc: true
 在 2003 年之前，CSS 并没有在 Web 开发中大量使用. 大部分样式通过原生标签属性实现
 早期的时候，页面布局通常使用的是 HTML 表格，在行和列中组织内容，这种方式虽然有效，但是把内容和表现杂糅在一块了，如果你想改变网页的布局就得需要修改大量的 HTML 代码。
 
+<div class="grid grid-cols-2 gap-4">
+
 ```html
 <table>
   <tr>
@@ -42,6 +44,7 @@ hideInToc: true
   </tr>
 </table>
 ```
+<div>
 
 上述代码的所有样式都是用 HTML 实现的:
 
@@ -49,6 +52,8 @@ hideInToc: true
 - align 属性用于对齐
 - 非语义化标签：`b` ，`i`  用于文本格式
 
+</div>
+</div>
 --- 
 
 ## CSS的出现
@@ -61,7 +66,7 @@ hideInToc: true
 
 ---
 
-## 可扩展性问题-选择器重复
+## 选择器重复
 
 使用原生CSS 时我们首先遇到的 CSS 的问题就是代码重复。每当我们定义伪类、伪元素或媒体查询时，我们都必须复制 CSS 选择器：
 
@@ -84,7 +89,7 @@ hideInToc: true
 
 ---
 
-## 可扩展性问题-命名冲突
+## 命名冲突
 
 我们定义的所有 CSS 规则最终都将位于单个全局命名空间中。如果不规范命名，重用的类名通常包含常见名词，例如 .modal、.button、.overlay 等。当项目一旦庞大，对于同名的css，它们就会被覆盖
 
@@ -101,7 +106,16 @@ const classname = `abc-heading-${isPromo ? "large" : "small"}`;
 
 --- 
 
-## 可扩展性问题-无用代码
+## 类命名困难
+
+缺失命名规范，不同人不同的风格，没有什么可读性，给类取名字一个十分痛苦的事情，大多数时候类名不伦不类，难以读懂。
+
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026073035.png" class="h-200px"/>
+
+
+--- 
+
+## 无用代码
 
 在大型项目中，我们通常会遇到许多未使用的 CSS 代码。
 通常发生在：
@@ -111,6 +125,80 @@ const classname = `abc-heading-${isPromo ? "large" : "small"}`;
 
 这些未使用的代码会增加文件大小，从而增加加载时间。并使代码库越来越难以管理。
 
+--- 
+
+## 方法论
+
+为了更明确的管理 CSS，开始有人提出一些 CSS 的方法论，使 CSS 也能具有良好的**重用性**、**维护性**和**延展性**。
+比较有名的CSS方法论大致上分为这三个：
+
+- OOCSS
+- SMACSS
+- BEM
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026075544.png" height="w-180px"/>
+
+--- 
+
+## OOCSS
+
+OOCSS（Object Oriented CSS）是 Nicole Sullivan 在 2008 年提出的一种 CSS 方法论。它的核心思想是将 CSS 样式分为两个部分：结构和皮肤。
+
+结构可以定义为 CSS 中定义元素的大小、边距与位置的部分。皮肤就是CSS的样式，比如颜色、字型大小、border-color、box-shadow 等等
+
+<div class="grid grid-cols-2 gap-4">
+
+```css
+.button{
+	width: 100px;
+	height: 40px;
+	background: red;
+}
+```
+
+```css
+/* 结构与样式分离*/ 
+.button{
+	width: 100px;
+	height: 40px;
+}
+
+.theme {
+	background: red;
+}
+```
+
+</div>
+
+---
+
+## SMACSS ****(Scalable and Modular Architecture for CSS)****
+
+SMACSS 认为 CSS 有 5 个类别，我们通过这 5 种类别来拼凑出完整的 class
+
+- Base 基础样式
+- Layout 布局样式
+- Module 模块样式
+- State 状态样式
+- Theme 主题样式
+
+根据结构分类，并定义出Base风格，最小化各浏览器的差异，遵守其Layout、Module、State规则可以有良好的重用性和维护性，并分离CSS与HTML，进而帮助简化选择器的深度
+
+---
+
+## BEM（ block, element, modifier）
+首先 BEM 是一个分层系统，它把我们的网站分为三层，这三层正好对应着 BEM 三个英文单词的简写 **block, element, modifier**，分为为 **块层、元素层、修饰符层**
+
+- block: 一个独立并可重复使用的页面组件。命名若有则需要以破折号 (-) 串接
+- element：Block中不可分离的元素。一定存在于Block中，因此命名会一定有Block名称作为前缀，以双下划线`__`分割
+- modifier:用于定义 Block 或 Element 的状态或属性。使用`--`两个破折号分隔组件名称及其修饰符
+
+以表单搜索为例：
+- block: `<form class="search-form"></form>`
+- element:  `<button class="search-form__button">Search</button`
+- modifier: `<button class="search-form__button search-form__button--disabled">Search</button>`
+
+
+BEM 的规范很容易理解，对于新手来说命名规则上也很友好，缺点就是可能会导致class名字非常长，并且没有遵循传统的命名规范。后来出现的原子化CSS又把这个非传统方式带到了一个新的高度。
 
 ---
 
@@ -416,6 +504,11 @@ export default defineConfig({
 --- 
 
 ## 默认预设
+该预设尝试提供流行的功能优先框架（包括 Tailwind CSS、Windi CSS、Bootstrap、Tachyons 等）的共同超集。
+例如，`ml-3`（Tailwind）、`ms-2`（Bootstrap）、`ma4`（Tachyons）和 `mt-10px`（Windi CSS）都是有效的。
+
+<div class="grid grid-cols-2 gap-4">
+
 ```tsx
 // uno.config.ts
 import { defineConfig } from 'unocss'
@@ -425,10 +518,6 @@ export default defineConfig({
   presets: [presetUno()]
 })
 ```
-
-该预设尝试提供流行的功能优先框架（包括 Tailwind CSS、Windi CSS、Bootstrap、Tachyons 等）的共同超集。
-
-例如，`ml-3`（Tailwind）、`ms-2`（Bootstrap）、`ma4`（Tachyons）和 `mt-10px`（Windi CSS）都是有效的。
 
 ```css
 .ma4 {
@@ -444,6 +533,9 @@ export default defineConfig({
   margin-top: 10px;
 }
 ```
+
+</div>
+
 
 --- 
 
@@ -490,9 +582,16 @@ export default defineConfig({
 
 ## 图标预设使用
 
+<div class="flex gap-4">
+
 ```bash
 pnpm add -D @unocss/preset-icons @iconify-json/[the-collection-you-want]
 ```
+
+**[Icônes](https://icones.js.org/)**
+
+</div>
+
 
 <iframe src="https://icones.js.org" class="w-full h-400px" />
 
@@ -501,6 +600,9 @@ pnpm add -D @unocss/preset-icons @iconify-json/[the-collection-you-want]
 ## 属性化预设
 
 假设你有一个使用 Tailwind 工具类的按钮。当列表变得越来越长时，它变得很难阅读和维护。
+使用属性化模式，你可以将工具类分成属性：
+
+<div class="grid grid-cols-2 gap-4">
 
 ```html
 <button
@@ -509,8 +611,6 @@ pnpm add -D @unocss/preset-icons @iconify-json/[the-collection-you-want]
   Button
 </button>
 ```
-
-使用属性化模式，你可以将工具类分成属性：
 
 ```html
 <button
@@ -524,8 +624,9 @@ pnpm add -D @unocss/preset-icons @iconify-json/[the-collection-you-want]
 </button>
 ```
 
-在更好的按类型进行组织的同时，也节省了重复输入相同前缀的时间。
+</div>
 
+在更好的按类型进行组织的同时，也节省了重复输入相同前缀的时间。
 
 
 ---
@@ -544,9 +645,11 @@ layout: section
 - Unocss插件
 使用 vscode 的编辑器，建议安装自动补全插件
 
-<div class="flex flex-col gap-2" >
-<img class="w-100 h-20" src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070153.png" />
+<img class="w-100 h-20 mb-4" src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070153.png" />
+
+<div class="grid grid-cols-2 gap-2" >
 <img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231024070602.png" />
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026080757.png"/>
 </div>
 
 ---
