@@ -682,6 +682,12 @@ Figma To Code 插件可以将设计稿转换为代码，支持原子化CSS的导
 
 --- 
 
+## 复杂的场景
+当面对复杂的场景，比如一些复杂动画, 不常见的属性。原子化CSS就显得力不从心了。这时候就需要使用组件库
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231027073151.png"/>
+推荐的框架：CSS组件库、headless UI
+---
+
 ## 使用方法 - CSS组件库
 
 选择基于原子化CSS搭建的纯CSS框架：daisyui
@@ -745,4 +751,57 @@ Headless UI 和 普通组件库的对比
 在保证高度自定义度的同时，也提供了一个好看的样式预设
 <img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026223048.png" class="h-300px"/>
 
+--- 
+
+## AI与原子化CSS
+Vercel推出了一款AI代码生成工具,[v0](https://v0.dev/) 可以快速生成前端组件代码。
+
+使用方法:
+1. 用自然语言描述需求
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231027070000.png" class="h-20"/>
+
+2.v0会根据需求生成组件代码
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231027070105.png" class="h-200px"/>
+
+--- 
+
+## V0.dev
+
+我们可以继续对不满意的地方提出修改意见，比如「背景请使用渐变蓝色」
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231027070209.png"/>
+此时，会生成一个新的版本（这里是v1）。具体来说，每个修改意见都会产生一个新的版本
+
+--- 
+
+## 使用V0.dev代码
+
+v0生成的组件代码中，样式与UI分别基于两个库：
+- 样式：基于原子化CSS
+- UI：基于shadcn
+
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231027070750.png" class="h-300px"/>
+shadcn的组件可以根据需要增加自定义样式
+
+--- 
+
+## v0.dev为什么使用原子化CSS
+在有限的未来，大模型输出的token限制还会一直存在，而「原子化CSS」相比「语义化CSS」能用更少的字符表达更丰富的样式信息。
+
+对比下面两段代码：
+
+「原子化CSS」的实现：
+
+```html
+<div class="m-1"></div>
+```
+「语义化CSS」的实现：
+
+```html
+<div class="container"></div>
+
+.container {
+  margin: 0.25rem;
+}
+```
+显然，从大模型的字符输出消耗来看，「原子化CSS」能用更少字符表达同样的样式。
 
