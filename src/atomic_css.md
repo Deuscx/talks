@@ -141,8 +141,17 @@ const classname = `abc-heading-${isPromo ? "large" : "small"}`;
 
 > 计算机科学两件最难的事情：缓存失效，命名
 
-<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026073035.png" class="h-200px"/>
 
+#### Two Hard Things
+
+<div class="flex gap-4 mt-4">
+
+<img src="https://martinfowler.com/mf.jpg" class="h-100px"/>
+
+> There are only two hard things in Computer Science: cache invalidation and naming things.
+> -- Phil Karlton
+
+</div>
 
 ---
 
@@ -151,10 +160,21 @@ const classname = `abc-heading-${isPromo ? "large" : "small"}`;
 在大型项目中，我们通常会遇到许多未使用的 CSS 代码。
 通常发生在：
 
+<div class="grid grid-cols-2 gap-4"> 
+
+<div>
+
 - 我们删除了 HTML 标记，但**忘记删除关联的样式**。
 - 我们想要删除关联的样式，但我们**不知道它们是否在代码库中的其他地方使用**。因此，我们选择不删除现有样式，而不是冒破坏现有代码的风险。
 
 这些未使用的代码会增加文件大小，从而增加加载时间。并使代码库越来越难以管理。
+
+</div>
+
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/longvuepagetable.png" class="h-300px"/>
+
+
+</div>
 
 <!-- TODO: 添加个Demo -->
 ---
@@ -203,7 +223,7 @@ OOCSS（Object Oriented CSS）是 Nicole Sullivan 在 2008 年提出的一种 CS
 
 ---
 layout: text-image
-media: https://assets.toptal.io/images?url=https%3A%2F%2Fuploads.toptal.io%2Fblog%2Fimage%2F126676%2Ftoptal-blog-image-1532003633585-029d918ef1d38dd3573bb593bb87cdda.png
+media: https://raw.githubusercontent.com/Deuscx/pic/master/images/images.png
 ---
 
 ## SMACSS 
@@ -243,7 +263,7 @@ BEM 是一个分层系统，它把网站分为三层，这三层分别为 **块�
 </form>
 ```
 
-<img src="https://static.coderbridge.com/img/techbridge/images/arvinh/BEM_BE_example.png"/>
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/BEM_BE_example.png"/>
 
 </div>
 
@@ -1078,7 +1098,7 @@ Headless UI 和 普通组件库的对比
 [shadcn/ui](https://ui.shadcn.com/)基于radix ui，提供了一套统一的样式规范（UI Kit）。使用shadcn中的某个组件，不是通过npm安装shadcn这个包，来引入组件。而是直接复制该组件的代码到项目目录下（当然，整个复制过程是通过cli工具完成的）。
 
 在保证高度自定义度的同时，也提供了一个好看的样式预设，提高了开发UI的速度
-<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/20231026223048.png" class="h-300px"/>
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/Animation.gif" class="h-300px"/>
 
 ---
 
@@ -1091,7 +1111,7 @@ npx shadcn-ui@latest add button
 
 2.将会创建一个`button.tsx` 到本地src，提供好看预设的同时，样式代码完全由自己控制
 
-<img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Ba2I-xwpsxuQ5RjXcYycFA.png" class="h-300px"/>
+<img src="https://raw.githubusercontent.com/Deuscx/pic/master/images/1_Ba2I-xwpsxuQ5RjXcYycFA.webp" class="h-300px"/>
 
 <!-- https://medium.com/@Kelly_CHI/shadcn-ui-tailwind-components-6fd4f1959147 -->
 ---
@@ -1161,18 +1181,28 @@ layout: new-section
 ---
 
 ## 原子化的优点
+
+<div class="mt-10">
+
 1. 没有了命名的烦恼，按照功能命名
 2. 没有相关嵌套，整体可读性加强
 3. 没有重复 CSS 类， 一个功能对应一个类名，一个类名一个功能。
 4. 没有新增 CSS 文件了。所有类名都是有工具库提供，项目中无需新增类了。
 
+</div>
+
 ---
 
 ## 原子化CSS使用建议
+
+<div class="mt-10">
+
 1. 过分原子化的样式会导致代码难以维护
 2. 选择合适的基础框架和工具，比如Ant Design、element-plus，Headless UI 配合原子化工具类
 
 原子化的 CSS 可以帮助我们的项目解决 CSS 命名，代码重复，不断膨胀的问题，但它也不是一劳永逸的，实际使用中还是会有问题，关键在与开发者自身的取舍，权衡利弊。不要一个规则用到底，遇到问题也不变通。
+
+</div>
 
 ---
 hideInToc: true
