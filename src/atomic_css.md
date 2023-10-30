@@ -6,6 +6,8 @@ highlighter: shiki
 title: 原子化CSS
 routerMode: 'hash'
 hideInToc: true
+css: unocss
+
 ---
 
 # 原子化CSS时代
@@ -65,7 +67,6 @@ CSS方法论
 
 </div>
 </div>
-
 ---
 
 ## CSS的出现
@@ -510,14 +511,19 @@ export default defineConfig({
 
 为了使其更加灵活，您可以通过将规则的第一个参数（我们称之为匹配器）更改为正则表达式，并将其主体更改为函数，从而使规则变得动态化，例如：
 
-```ts
-// uno.config.ts
+```ts {monaco-diff}
 export default defineConfig({
   rules: [
--    ['m-1', { margin: '1px' }]
-+    [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
+    ['m-1', { margin: '1px' }]
   ],
 })
+~~~
+export default defineConfig({
+  rules: [
+    [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })]
+  ],
+})
+
 ```
 
 其中，回调函数的第一个参数为匹配结果，所以你可以对它进行解构以获得正则表达式的匹配组。
