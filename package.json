@@ -1,5 +1,6 @@
 {
   "name": "talk-presentations",
+  "packageManager": "pnpm@8.6.0",
   "private": true,
   "scripts": {
     "build": "slidev build",
