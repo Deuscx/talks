@@ -215,7 +215,7 @@ export default {
 # Visitor
 
 访问器最基本的思想是创建一个“访问器”对象，这个对象可以处理不同类型的节点函数
-```javascript{all|1-9|10-15|all}
+```javascript
   IfStatement(node) {
         if (!node.consequent)
           return
