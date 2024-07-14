@@ -1,13 +1,12 @@
 ---
-theme: seriph
 background: https://source.unsplash.com/collection/94734566/1920x1080
 class: text-center
 highlighter: shiki
+colorSchema: dark
 drawings:
   persist: false
 css: unocss
 routerMode: 'hash'
-# transition: slide-left | slide-right
 ---
 
 <h1 flex="~ col">

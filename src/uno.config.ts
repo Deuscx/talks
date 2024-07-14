@@ -1,5 +1,4 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno } from "unocss";
-import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineConfig({
     theme: {
@@ -37,6 +36,5 @@ export default defineConfig({
         presetUno(),
         presetAttributify(),
         presetIcons({}),
-        presetDaisy()
     ]
 })
