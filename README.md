@@ -14,7 +14,6 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 <!-- slides starts -->
 
 - ast: [link](https://deuscx.github.io/talks/ast/)
-- atomic_css: [link](https://deuscx.github.io/talks/atomic_css/)
 - components: [link](https://deuscx.github.io/talks/components/)
 - crdt: [link](https://deuscx.github.io/talks/crdt/)
 - electron: [link](https://deuscx.github.io/talks/electron/)
