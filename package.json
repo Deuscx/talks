@@ -4,18 +4,15 @@
   "private": true,
   "scripts": {
     "build": "slidev build",
-    "dev": "slidev --open",
+    "dev": "slidev",
     "export": "slidev export",
     "deploy": "zx ./scripts/deploy.mjs"
   },
   "dependencies": {
     "@slidev/cli": "^0.49.16",
-    "@slidev/theme-default": "*",
-    "@slidev/theme-seriph": "*",
+    "@slidev/client": "^0.49.16",
     "@vueuse/core": "^10.5.0",
-    "rety": "^1.0.0",
-    "unocss": "^0.53.1",
-    "zx": "^7.2.2"
+    "rety": "^1.0.0"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.18",
@@ -23,6 +20,13 @@
     "@iconify-json/logos": "^1.1.33",
     "@iconify-json/mdi": "^1.1.52",
     "@iconify-json/twemoji": "^1.1.11",
-    "playwright-chromium": "^1.35.1"
+    "@types/seedrandom": "^3.0.8",
+    "playwright-chromium": "^1.35.1",
+    "seedrandom": "^3.0.5",
+    "@slidev/theme-default": "^0.25.0",
+    "@slidev/theme-seriph": "^0.25.0",
+    "unocss": "^0.53.1",
+    "vue-router": "^4.4.0",
+    "zx": "^7.2.2"
   }
 }

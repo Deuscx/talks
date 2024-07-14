@@ -304,7 +304,7 @@ clock 可以认为是一个从零开始递增的计数器，他有两种更新�
 
 Yjs 对使用者提供了包含map， array，text等6种的数据类型。基础使用方法如下:
 
-```ts {monaco} {height: '350px'}
+```ts  {height: '350px'}
 import * as Y from 'yjs'
 
 // 应用中的全部协作状态均可在单个 YDoc 容器中承载
