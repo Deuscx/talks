@@ -1,0 +1,4 @@
+import{o as a,c as n,k as l,e as t,g as o,q as i,s as m,B as r}from"../modules/vue-DGlfd8fY.js";import{I as d}from"./default-vi340qpl.js";import{u,f as p}from"./context-X6jFi6ea.js";import{_ as c}from"../index-C9JwP6Pz.js";import"../modules/shiki-DD6L9QWD.js";const f={__name:"2",setup(g){const{$slidev:v,$nav:_,$clicksContext:x,$clicks:C,$page:$,$renderContext:k,$frontmatter:s}=u();return(y,e)=>(a(),n(d,i(m(r(p)(r(s),1))),{default:l(()=>[e[0]||(e[0]=t("h1",null,"简介",-1)),e[1]||(e[1]=t("p",null,"Electron是一个使用 JavaScript、HTML 和 CSS 构建桌面应用程序的框架。",-1)),o(' <img src="/img1.png" class="h-60 rounded shadow" /> '),e[2]||(e[2]=t("ul",null,[t("li",null,"Chromium 提供UI渲染能力"),t("li",null,"Node.js 负责业务逻辑"),t("li",null,"Native API 负责原生化能力")],-1)),o(`
+You can have \`style\` tag in markdown to override the style for the current page.
+Learn more: https://sli.dev/guide/syntax#embedded-styles
+`)]),_:1},16))}},S=c(f,[["__scopeId","data-v-6f482442"]]);export{S as default};
