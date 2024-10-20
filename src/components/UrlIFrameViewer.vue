@@ -32,9 +32,9 @@ function openModal(url: string) {
         :key="item.url"
         class="cursor-pointer rounded p-2"
       >
-        <div @click="openModal(item.url)">
+        <a @click="openModal(item.url)">
           {{ item.title }}
-        </div>
+        </a>
       </li>
     </ul>
 
