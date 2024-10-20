@@ -7,5 +7,6 @@ export default defineConfig({
             strict: false
         }
     },
+    base: '/talks/',
     publicDir: resolve(__dirname, './src/public'),
 })
