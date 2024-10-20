@@ -13,6 +13,7 @@ Learn more about Slidev on [documentations](https://sli.dev/).
 
 <!-- slides starts -->
 
+- ai-editor: [link](https://deuscx.github.io/talks/ai-editor/)
 - ast: [link](https://deuscx.github.io/talks/ast/)
 - components: [link](https://deuscx.github.io/talks/components/)
 - crdt: [link](https://deuscx.github.io/talks/crdt/)
